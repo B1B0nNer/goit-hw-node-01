@@ -1,0 +1,25 @@
+{
+  "name": "goit-hw-node-01",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "goit hw node js 01",
+  "main": "index.js",
+  "scripts": {
+    "test": "start",
+    "start": "node",
+    "dev": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/B1B0nNer/goit-hw-node-01.git"
+  },
+  "author": "B1B0nNer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/B1B0nNer/goit-hw-node-01/issues"
+  },
+  "homepage": "https://github.com/B1B0nNer/goit-hw-node-01",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
