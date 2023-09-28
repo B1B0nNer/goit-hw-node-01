@@ -42,7 +42,7 @@ async function removeContact(contactId) {
         const removedContact = fileData.filter(contact => contact.id === contactId);
         const filteredData = fileData.filter(contact => contact.id !== contactId);
         
-        console.log("Список з видаленим контактом: ", filteredData);
+        console.log("Оновленний список: ", filteredData);
         console.log("Видаленний контакт: ", removedContact);
 
 

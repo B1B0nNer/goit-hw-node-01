@@ -21,5 +21,8 @@
   "homepage": "https://github.com/B1B0nNer/goit-hw-node-01",
   "devDependencies": {
     "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
   }
 }
