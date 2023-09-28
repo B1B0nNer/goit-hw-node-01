@@ -71,7 +71,7 @@ async function addContact(name='Nugget', email='nuggetmail@gmail.com', phone='+3
             "email": email,
             "phone": phone
         };
-        //fs.appendFile(contactPath, JSON.stringify(newContact), 'utf-8');
+        //fs.appendFile(contactPath, JSON.stringify(newContact), 'utf-8'); додавання контакту, по тз не маэ бути коментарів, проте цей коментар працює, тому тут
         console.log(newContact);
     } catch (error) {
         console.error('Помилка читання файлу:', error);
