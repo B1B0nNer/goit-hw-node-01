@@ -12,7 +12,7 @@ async function listContacts() {
     const data = await fs.readFile(contactPath, 'utf-8');
     const fileData = data;
     
-    console.log(fileData);
+    return fileData;
   } catch (error) {
     console.error('Помилка читання файлу:', error);
   }
@@ -24,7 +24,6 @@ async function getContactById(contactId = 'qdggE76Jtbfd9eWJHrssH') {
       const fileData = JSON.parse(data); 
   
       const foundContact = fileData.find(contact => contact.id === contactId);
-      console.log(foundContact || null);
 
       return foundContact || null;
 
@@ -39,11 +38,17 @@ async function removeContact(contactId) {
         const data = await fs.readFile(contactPath, 'utf-8');
         const fileData = JSON.parse(data);
 
-        const removedContact = fileData.filter(contact => contact.id === contactId);
-        const filteredData = fileData.filter(contact => contact.id !== contactId);
         
-        console.log("Оновленний список: ", filteredData);
-        console.log("Видаленний контакт: ", removedContact);
+        const removedContact = fileData.filter(contact => contact.id === contactId);
+        const removedContactID = fileData.findIndex(contact => contact.id === contactId);
+
+        fileData.splice(removedContactID, 1);
+
+        const updatedData = JSON.stringify(fileData, null, 2);
+
+        fs.writeFile(contactPath, updatedData);
+      
+        return removedContact;
 
 
     } catch (error) {
@@ -71,8 +76,16 @@ async function addContact(name='Nugget', email='nuggetmail@gmail.com', phone='+3
             "email": email,
             "phone": phone
         };
-        //fs.appendFile(contactPath, JSON.stringify(newContact), 'utf-8'); додавання контакту, по тз не маэ бути коментарів, проте цей коментар працює, тому тут
-        console.log(newContact);
+
+        const data = await fs.readFile(contactPath, 'utf-8');
+        const fileData = JSON.parse(data);
+
+        fileData.push(newContact);
+
+        const updatedData = JSON.stringify(fileData, null, 2);
+
+        fs.writeFile(contactPath, updatedData);
+        return newContact;
     } catch (error) {
         console.error('Помилка читання файлу:', error);
       }
