@@ -11,7 +11,7 @@ const contactPath = path.join(__dirname, 'db', 'contacts.json');
 async function listContacts() {
   try {
     const data = await fs.readFile(contactPath, 'utf-8');
-    const fileData = data;
+    const fileData = JSON.parse(data);
     
     return fileData;
   } catch (error) {
@@ -49,7 +49,7 @@ async function removeContact(contactId) {
 
         fs.writeFile(contactPath, updatedData);
       
-        return removedContact;
+        return removedContact[0] || null;
 
 
     } catch (error) {
